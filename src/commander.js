@@ -10,6 +10,7 @@ program
   .option('-s, --source [pathname]', 'source directory')
   .option('-d, --destination [pathname]', 'destination directory', '/tmp')
   .option('-m, --max [size]', 'Files with a superior size (in Mb) will be processed', env.DEFAULT_MAX_SIZE)
+  .option('-p, --preset [preset]', 'Handbrake preset: Normal or High Profile', env.DEFAULT_PRESET)
   .parse(argv)
 
 if (!program.source)
@@ -28,9 +29,11 @@ const parse = async () => {
     return { filename, size, width, height }
   }))
 
-  const batch = data.filter(({ size }) => size > parseInt(program.max, 10))
+  const batch = data
+    .filter(({ size }) => size > parseInt(program.max, 10))
+    .sort((a, b) => a.size - b.size)
 
-  encode(batch[0].filename, program.source, program.destination) // Percent complete: 3.21%, ETA: 00h10m47s
+  batch.forEach((video, index) => encode(video, program, `${index + 1} / ${batch.length}`))
 }
 
 export {

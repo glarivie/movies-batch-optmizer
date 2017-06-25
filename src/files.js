@@ -15,7 +15,12 @@ const getFileSize = path =>
     .then(({ size }) => convert(size).from('b').to('Mb'))
     .catch(err => new Error(`Cannot get filesize for ${path}`, err))
 
+const removeFile = path =>
+  util.promisify(fs.unlink)(path)
+    .catch(err => new Error(`Cannot delete file ${path}`, err))
+
 export {
   readDirectory,
   getFileSize,
+  removeFile,
 }
