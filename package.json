@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "commander": "^2.10.0",
+    "convert-units": "^2.2.0",
+    "dotenv": "^4.0.0",
+    "ffprobe": "^1.1.0",
+    "ffprobe-static": "^2.0.0",
+    "handbrake-js": "^2.2.2",
+    "lodash": "^4.17.4",
+    "progress": "^2.0.0"
+  },
+  "name": "movies-batch-optmizer",
+  "description": "A command line tool to batch convert and replace all HD videos in a directory.",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.1.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.0"
+  },
+  "scripts": {
+    "build": "rm -rf build/* && babel src --out-dir build",
+    "start": "npm run build && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hqro/movies-batch-optmizer.git"
+  },
+  "author": "Guillaume L. <glarivie@student.42.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hqro/movies-batch-optmizer/issues"
+  },
+  "homepage": "https://github.com/hqro/movies-batch-optmizer#readme"
+}
