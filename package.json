@@ -7,8 +7,7 @@
     "ffprobe-static": "^2.0.0",
     "fs-extra": "^3.0.1",
     "handbrake-js": "^2.2.2",
-    "lodash": "^4.17.4",
-    "progress": "^2.0.0"
+    "lodash": "^4.17.4"
   },
   "name": "movies-batch-optmizer",
   "description": "A command line tool to batch convert and replace all HD videos in a directory.",

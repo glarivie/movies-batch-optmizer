@@ -1,7 +1,7 @@
 import ffprobe from 'ffprobe'
 import ffprobeStatic from 'ffprobe-static'
 import hbjs from 'handbrake-js'
-import ProgressBar from 'progress'
+import ProgressBar from 'ascii-progress'
 import _ from 'lodash'
 import { log } from 'console'
 import fs from 'fs-extra'
@@ -17,7 +17,10 @@ const encode = ({ filename, size }, { source, destination, preset }, progress) =
   const name = `${filename.split('.').slice(0, -1).join('.')}_optimized.mp4`
   const input = `${source}/${filename}`
   const output = `${destination}/${name}`
-  const bar = new ProgressBar(`[${progress}] ${filename} [:bar] :completed % :time`, { total: 100 })
+  const bar = new ProgressBar({
+    schema: `[${progress}] ${filename} [:bar] :completed % :time`,
+    total: 100,
+  })
 
   hbjs
     .spawn({ input, output, preset })
